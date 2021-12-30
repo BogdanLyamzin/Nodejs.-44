@@ -1,6 +1,7 @@
-.idea
-.vscode
+.env
+config.js
 package-lock.json
 yarn.lock
-.env
+yarn.log
+yarn.error
 node_modules/
