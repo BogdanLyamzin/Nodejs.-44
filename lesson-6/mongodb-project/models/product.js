@@ -32,7 +32,9 @@ const productSchema = Schema({
     }
 }, {versionKey: false, timestamps: true});
 
-const joiProductSchema = Joi.object({
+
+
+const joiProductCreateSchema = Joi.object({
     name: Joi.string().min(2).required(),
     price: Joi.number().min(0.01).required(),
     inSale: Joi.boolean,
@@ -53,12 +55,14 @@ const joiProductUpdateIsSaleSchema = Joi.object({
 });
 
 const Product = model("product", productSchema);
-// categories => category
-// mice => mouse
+
+const schemas = {
+    productCreate: joiProductCreateSchema,
+    productUpdate: joiProductUpdateSchema,
+    productUpdateInSale: joiProductUpdateIsSaleSchema
+}
 
 module.exports = {
     Product,
-    joiProductSchema,
-    joiProductUpdateSchema,
-    joiProductUpdateIsSaleSchema
+    schemas
 };
