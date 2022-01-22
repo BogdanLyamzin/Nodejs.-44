@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="form" action="" enctype="multipart/form-data">
+        <input type="text" name="name">
+        <input name="image" type="file" multiple>
+        <button type="submit">Отправить</button>
+    </form>
+    <!-- <button id="btn">Click</button> -->
+    <script>
+        // const obj = {
+        //     name: "obj",
+        //     func(){
+        //         console.log(this);
+        //     },
+        //     createFunc(){
+        //         console.log(this);
+        //         const arrowFunc = ()=> console.log(this)
+        //         return arrowFunc;
+        //     }
+        // }
+
+        // const obj2 = {
+        //     name: "obj2"
+        // }
+        // const someFunc = ()=> console.log(this)
+        const form = document.getElementById("form");
+        // const btn = document.getElementById("btn")
+        // obj.func()
+        // someFunc()
+        // const arrowFunc = obj.createFunc();
+        // btn.addEventListener("click", arrowFunc)
+        // setTimeout(arrowFunc, 3000)
+        // arrowFunc()
+        // btn.addEventListener("click", obj.func)
+        // setTimeout(obj.func, 3000)
+        // obj.func.call(obj2)
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            const data = new FormData();
+
+            data.append("name", this.elements.name.value);
+            data.append("image", this.elements.image.files[0])
+        })
+    </script>
+</body>
+</html>
